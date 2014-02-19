@@ -1,0 +1,56 @@
+{
+	"manifest_version": 2,
+	"name": "7-Key TTS",
+	"description": "Simple TTS that you can use with only 7 keys",
+	"version": "0.1",
+
+	"browser_action": {
+		"default_icon": {
+			"19": "images/icon-19.png",
+			"38": "images/icon-38.png"
+		},
+		"default_title": "Testing TTS"
+	},
+
+	"background": {
+		"page": "html/background.html",
+		"persistent": false
+	},
+
+	"content_scripts": [
+		{
+			"matches": [
+				"http://*/*", 
+				"https://*/*",
+				"<all_urls>"
+			],
+			"css": ["css/styles.css"],
+			"js": [
+				"js/lib/jquery-1.11.0.min.js",
+				"js/content.js"
+			]
+		}
+	],
+
+	"icons": {
+		"48": "images/icon-48.png",
+		"128": "images/icon-128.png"
+	},
+
+	"permissions": [
+		"tabs",
+		"tts",
+		"ttsEngine"
+	],
+
+	"tts_engine": {
+		"voices": [
+			{
+				"voice_name": "mujer",
+				"lang": "es-ES",
+				"gender": "female",
+				"event_types": ["start", "end", "marker"]
+			}
+		]
+	}
+}
